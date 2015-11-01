@@ -247,6 +247,32 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/sbin/wait4tad_static:root/sbin/wait4tad_static \
     $(COMMON_PATH)/rootdir/system/bin/tad_static:system/bin/tad_static
 
+# for Gecko to support virtual storage
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/rootdir/system/etc/volume.cfg:system/etc/volume.cfg
+
+# for Gecko to boot to recovery
+PRODUCT_PACKAGES += \
+    librecovery
+
+ENABLE_LIBRECOVERY := true
+RECOVERY_EXTERNAL_STORAGE := /data/media/0
+export USE_SET_METADATA := true
+
+# for Gecko to support bluedroid stack
+PRODUCT_PACKAGES += \
+    bluetooth.default
+
+# for Gecko to support virtual home button
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.moz.has_home_button=0 \
+
+# for Gecko to support NFC
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.moz.nfc.enabled=true
+
+PRODUCT_PACKAGES += nfcd
+
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
