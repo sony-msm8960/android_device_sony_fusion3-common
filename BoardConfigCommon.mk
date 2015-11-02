@@ -128,32 +128,3 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/
 # Boot animation
 TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 TARGET_BOOTANIMATION_USE_RGB565 := true
-
-# SELinux
-include device/qcom/sepolicy/sepolicy.mk
-
-BOARD_SEPOLICY_DIRS += \
-    device/sony/fusion3-common/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-    file_contexts \
-    property_contexts \
-    device.te \
-    file.te \
-    illumination.te \
-    init.te \
-    init_shell.te \
-    mac_update.te \
-    mdm_helper.te \
-    mediaserver.te \
-    mpdecision.te \
-    property.te \
-    radio.te \
-    recovery.te \
-    system_server.te \
-    tad.te \
-    ta_qmi_client.te \
-    thermanager.te \
-    untrusted_app.te \
-    updatemiscta.te \
-    wpa.te
